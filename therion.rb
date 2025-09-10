@@ -28,10 +28,18 @@ class Therion < Formula
       s.gsub! "/Applications", prefix
     end
 
+<<<<<<< Updated upstream
     # workaround tar permission issue "Could not open extended attribute file"
     inreplace "loch/help/CMakeLists.txt" do |s|
       s.gsub! "${CMAKE_COMMAND} -E tar cfv loch.htb --format=zip", "tar --no-mac-metadata -czvf loch.htb"
     end
+=======
+    # # workaround tar permission issue "Could not open extended attribute file"
+    # inreplace "loch/help/CMakeLists.txt" do |s|
+    #   s.gsub! "${CMAKE_COMMAND} -E tar cfv loch.htb --format=zip", "tar --no-mac-metadata -czvf loch.htb"
+    # end
+    #
+>>>>>>> Stashed changes
 
 
     ENV.prepend_path "PATH", "/Library/TeX/texbin"
