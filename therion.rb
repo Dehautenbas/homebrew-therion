@@ -1,9 +1,9 @@
 class Therion < Formula
   desc "Processes survey data and generates maps or 3D models of caves"
   homepage "https://therion.speleo.sk"
-  url "https://github.com/therion/therion/archive/v6.3.4.tar.gz"
-  sha256 "e678a539aeab436465556e769fa9ecbc51b2944f8969a34b29cc3fdc6d78765a"
-  version "6.3.4"
+  url "https://github.com/therion/therion/archive/v6.3.3.tar.gz"
+  sha256 "55d5e5bd2f6cf27cd32f9cb096c15ced6939605f1c1754a97456551112481ce5"
+  version "6.3.3"
   revision 1
   head "https://github.com/therion/therion.git"
 
@@ -23,15 +23,15 @@ class Therion < Formula
   depends_on "wxwidgets"
   depends_on "zlib"
 
-  # def install
-  #   inreplace "loch/CMakeLists.txt" do |s|
-  #     s.gsub! "/Applications", prefix
-  #   end
+  def install
+    inreplace "loch/CMakeLists.txt" do |s|
+      s.gsub! "/Applications", prefix
+    end
 
-    # # workaround tar permission issue "Could not open extended attribute file"
-    # inreplace "loch/help/CMakeLists.txt" do |s|
-    #   s.gsub! "${CMAKE_COMMAND} -E tar cfv loch.htb --format=zip", "tar --no-mac-metadata -czvf loch.htb"
-    # end
+    # workaround tar permission issue "Could not open extended attribute file"
+    inreplace "loch/help/CMakeLists.txt" do |s|
+      s.gsub! "${CMAKE_COMMAND} -E tar cfv loch.htb --format=zip", "tar --no-mac-metadata -czvf loch.htb"
+    end
 
 
     ENV.prepend_path "PATH", "/Library/TeX/texbin"
@@ -42,9 +42,9 @@ class Therion < Formula
     end
   end
 
-  # def caveats
-  #   "Copy Loch.app to your /Applications folder: cp -R #{prefix}/loch.app/ /Applications/loch.app"
-  # end
+  def caveats
+    "Copy Loch.app to your /Applications folder: cp -R #{prefix}/loch.app/ /Applications/loch.app"
+  end
 
   test do
     system "#{bin}/therion", "--version"
