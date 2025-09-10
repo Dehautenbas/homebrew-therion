@@ -28,10 +28,10 @@ class Therion < Formula
       s.gsub! "/Applications", prefix
     end
 
-    # workaround tar permission issue "Could not open extended attribute file"
-    inreplace "loch/help/CMakeLists.txt" do |s|
-      s.gsub! "${CMAKE_COMMAND} -E tar cfv loch.htb --format=zip", "tar --no-mac-metadata -czvf loch.htb"
-    end
+    # # workaround tar permission issue "Could not open extended attribute file"
+    # inreplace "loch/help/CMakeLists.txt" do |s|
+    #   s.gsub! "${CMAKE_COMMAND} -E tar cfv loch.htb --format=zip", "tar --no-mac-metadata -czvf loch.htb"
+    # end
 
 
     ENV.prepend_path "PATH", "/Library/TeX/texbin"
@@ -42,9 +42,9 @@ class Therion < Formula
     end
   end
 
-  def caveats
-    "Copy Loch.app to your /Applications folder: cp -R #{prefix}/loch.app/ /Applications/loch.app"
-  end
+  # def caveats
+  #   "Copy Loch.app to your /Applications folder: cp -R #{prefix}/loch.app/ /Applications/loch.app"
+  # end
 
   test do
     system "#{bin}/therion", "--version"
