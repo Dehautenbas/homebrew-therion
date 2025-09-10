@@ -24,9 +24,9 @@ class Therion < Formula
   depends_on "zlib"
 
   def install
-    # inreplace "loch/CMakeLists.txt" do |s|
-    #   s.gsub! "/Applications", prefix
-    # end
+    inreplace "loch/CMakeLists.txt" do |s|
+      s.gsub! "/Applications", prefix
+    end
 
     # workaround tar permission issue "Could not open extended attribute file"
     inreplace "loch/help/CMakeLists.txt" do |s|
